@@ -1,6 +1,6 @@
 # steganographyapp
 
-A new Flutter project.
+A new Flutter final year project.
 
 ## Getting Started
 

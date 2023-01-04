@@ -81,6 +81,27 @@ class _MyHomePageState extends State<MyHomePage> {
       }
     }
   }
+  
+  // TODO: implement save with custom name 
+  
+   Future _saveevent() async {
+    Response response;
+    var dio = new Dio();
+    if (_image == null) {
+      print("Please select any image to save!");
+    } else {
+      final bytes = Io.File(pickedFile.path).readAsBytesSync();
+      String img64 = base64Encode(bytes);
+      response = await dio.post('URL/encode',
+          data: {'text': secret.text, 'img': img64}); //replace the URL
+      if (response.statusCode == 200) {
+        _base64 = response.data.toString();
+        success();
+      } else {
+        print("Some Error Occurred!");
+      }
+    }
+  }
 
   Future _uploadD() async {
     Response response;
